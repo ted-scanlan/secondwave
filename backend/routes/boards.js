@@ -6,7 +6,7 @@ let Board = require('../models/board.model')  // gets the model we created so we
 
 router.route('/').get((req, res) => {  //if user goes to address localhost:5000/boards/
   Board.find()
-  .then(users => res.json(boards))
+  .then(boards => res.json(boards))
   .catch(err => res.status(400).json('Error: ' + err))
 });
 
@@ -14,13 +14,15 @@ router.route('/').get((req, res) => {  //if user goes to address localhost:5000/
 router.route('/add').post((req, res) => {   //handles incoming post requests. the new username is part of the request body
   const username = req.body.username;
   const description = req.body.description;
-  const duration = Number(req.body.duration);
+  const location = req.body.location;
+  const price = Number(req.body.price);
   const date = Date.parse(req.body.date);
 
-  const newBoard = new Board({
+  const newBoard = new Board({        // this is similar in rails when we add a user under the route in controller
     username,
     description,
-    duration,
+    location,
+    price,
     date,
   });   // we create a new instance of User
 
@@ -28,5 +30,14 @@ router.route('/add').post((req, res) => {   //handles incoming post requests. th
   .then(() => res.json('Board added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
+
+router.route('/:id').get((req, res) => {
+  Board.findById(req.params.id)  // built in mongoose method.
+  .then(board => res.json(board))
+  .catch(err => res.status(400).json('Error: ' + err));
+})
+
+
+// you can test that this backend api works correctly by using insomnia to simulate interactions with the databse. then you should see the changes made on the google cloud mongoDB account.
 
 module.exports = router;

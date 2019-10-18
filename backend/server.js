@@ -19,12 +19,12 @@ connection.once('open', () => {
 })
 
 
-const boards = require('./routes/boards')
-const users = require('./routes/users')
+const boardsRouter = require('./routes/boards')
+const usersRouter = require('./routes/users')
 
 
-app.use('./boards', boardsRouter)
-app.use('./users', usersRouter)// similar to 'routes config' in rails.
+app.use('/boards', boardsRouter)
+app.use('/users', usersRouter)// similar to 'routes config' in rails.
 //when someone goes to /boards it will load everything in the boards router
 
 
