@@ -16,10 +16,13 @@ const Navbar1 = (props) => {         // this is a function component rather than
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <NavLink href="/components/">Login</NavLink>
+              <NavLink href="/login">Login</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">Search for a board</NavLink>
+              <NavLink href="/user">Sign up</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/create">Post a board</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
