@@ -12,14 +12,14 @@ router.route('/').get((req, res) => {  //if user goes to address localhost:5000/
 
 
 router.route('/add').post((req, res) => {   //handles incoming post requests. the new username is part of the request body
-  const username = req.body.username;
+  const headline = req.body.headline;
   const description = req.body.description;
   const location = req.body.location;
   const price = Number(req.body.price);
   const date = Date.parse(req.body.date);
 
   const newBoard = new Board({        // this is similar in rails when we add a user under the route in controller
-    username,
+    headline,
     description,
     location,
     price,
