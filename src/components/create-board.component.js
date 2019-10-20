@@ -7,26 +7,35 @@ class CreateBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      headline: '',
       description: '',
       location: '',
       contact: '',
       price: 0,
-      date: new Date(),
 
 
     }
 
+    this.onSubmit1 = this.onSubmit1.bind(this)
+    this.onChangeHeadline = this.onChangeHeadline.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onChangePrice = this.onChangePrice.bind(this);
-    this.onChangeContact = this.onChangeContact.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
+    // this.onChangeContact = this.onChangeContact.bind(this);
+
 
 
   }
 
   componentDidMount() {     //this function runs right before the component loads on the page
 
+  }
+  //
+  onChangeHeadline(e) {
+    this.setState({
+      headline: e.target.value
+    })
+    console.log(this.state.headline);
   }
 
   onChangeDescription(e) {
@@ -53,25 +62,25 @@ class CreateBoard extends Component {
     })
   }
 
-  onChangeDate(date) {
-    this.setState({
-      date: date.target.value
-    })
-  }
 
-  onSubmit(e) {
-    e.preventDefault();
 
-    const exercise = {
-      username: this.state.username,
+  onSubmit1(e) {
+
+
+    const board = {
+       headline: this.state.headline,
       description: this.state.description,
       location: this.state.location,
       price: this.state.price,
-      date: this.state.date
-    }
-    console.log(exercise);
 
-    window.location = '/';
+    }
+    console.log("njjdknj");
+    console.log(board);
+e.preventDefault()
+
+     // window.location = '/';
+
+
 
   }
 
@@ -84,24 +93,32 @@ render() {
 
   return (
 
-    <Form onSubmit={this.onSubmit}>
+    <Form onSubmit={ e => this.onSubmit1(e) }>
     <FormGroup row>
       <Label for="exampleText" sm={2} >Headline</Label>
       <Col sm={10}>
-        <Input type="textarea" name="text" id="exampleText" maxLength="50"/>
+        <Input type="textarea" name="text" id="exampleText" maxLength="50"
+        value={this.state.headline}
+        onChange={this.onChangeHeadline}
+
+          />
       </Col>
     </FormGroup>
     <FormGroup row>
       <Label for="exampleText" sm={2} >Description</Label>
       <Col sm={10}>
-        <Input type="textarea" name="text" id="exampleText" maxLength="300"/>
+        <Input type="textarea" name="text" id="exampleText" maxLength="300"
+        value={this.state.description}
+        onChange={this.onChangeDescription}/>
       </Col>
     </FormGroup>
 
       <FormGroup row>
         <Label for="exampleText" sm={2} >Location</Label>
         <Col sm={10}>
-          <Input type="textarea" name="text" id="exampleText" maxLength="300"/>
+          <Input type="textarea" name="text" id="exampleText" maxLength="300"
+          value={this.state.location}
+          onChange={this.onChangeLocation}/>
         </Col>
       </FormGroup>
 
@@ -111,22 +128,11 @@ render() {
         type="number"
         name="number"
         id="exampleNumber"
+        value={this.state.price}
+        onChange={this.onChangePrice}
 
       />
     </FormGroup>
-
-
-
-      <FormGroup row>
-        <Label for="exampleFile" sm={2}>Pictures</Label>
-        <Col sm={10}>
-          <Input type="file" name="file" id="exampleFile" />
-          <FormText color="muted">
-            This is some placeholder block-level help text for the above input.
-            It's a bit lighter and easily wraps to a new line.
-          </FormText>
-        </Col>
-      </FormGroup>
 
       <FormGroup check row>
         <Col sm={{ size: 10, offset: 2 }}>
