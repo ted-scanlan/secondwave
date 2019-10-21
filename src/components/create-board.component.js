@@ -27,9 +27,9 @@ class CreateBoard extends Component {
 
   }
 
-  componentDidMount() {     //this function runs right before the component loads on the page
-
-  }
+  // componentDidMount() {     //this function runs right before the component loads on the page
+  //
+  // }
   //
   onChangeHeadline(e) {
     this.setState({
