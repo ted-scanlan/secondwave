@@ -16,14 +16,16 @@ router.route('/add').post((req, res) => {   //handles incoming post requests. th
   const description = req.body.description;
   const location = req.body.location;
   const price = Number(req.body.price);
-  const date = Date.parse(req.body.date);
+  const contact = req.body.location;
+
 
   const newBoard = new Board({        // this is similar in rails when we add a user under the route in controller
     headline,
     description,
     location,
     price,
-    date,
+    contact
+
   });   // we create a new instance of User
 
   newBoard.save()   // which is then saved to database using inbuilt mongoDB save method.

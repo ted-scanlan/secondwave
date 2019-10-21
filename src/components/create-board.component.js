@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText, CustomInput } from 'reactstrap';
 import InputRange from 'react-input-range';
+import axios from 'axios';
 
 class CreateBoard extends Component {
 
@@ -74,8 +75,10 @@ class CreateBoard extends Component {
       price: this.state.price,
 
     }
-    console.log("njjdknj");
-    console.log(board);
+    axios.post('http://localhost:5000/boards/add', board)
+    .then (res => {
+      console.log(res.data);
+    })
 e.preventDefault()
 
      // window.location = '/';

@@ -7,8 +7,7 @@ const boardSchema = new Schema({
   description: { type: String, required: true },
   location: { type: String, required: true },
   price: { type: Number, required: true },
-  contact: { type: String, required: true },
-  date: { type: Date, required: true },
+  contact: { type: String, required: true }
 }, {
   timestamps: true,
 

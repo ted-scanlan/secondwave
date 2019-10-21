@@ -7,7 +7,7 @@ class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    username: ''
+    username: '',
 
 
     }
@@ -28,19 +28,18 @@ class CreateUser extends Component {
 
 
     onSubmit1(e) {
-
+console.log("dicks");
 // e.preventDefault()
       const user = {
          username: this.state.username,
-
-
       }
-      
+
       axios.post('http://localhost:5000/users/add', user)
       .then (res => {
         console.log(res.data);
       })
-      e.preventDefault()
+  
+       e.preventDefault()
 
        // window.location = '/';
 
