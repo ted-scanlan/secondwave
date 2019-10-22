@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import Board from './board.component.js'
 import axios from 'axios';
+import './boardList.styles.css'
 
 
 
@@ -44,23 +45,12 @@ class BoardsList extends Component {
 render() {
 
   return (
-    <Table>
-  <thead>
-    <tr>
-      <th>Headline</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Price</th>
-      <th>Contact</th>
-      <th>Added</th>
-    </tr>
-  </thead>
-  <tbody>
+<div>
+<div className="scrolling-wrapper">
   { this.boardslist() }
+</div>
 
-
-  </tbody>
-</Table>
+  </div>
 
   );
 }
